@@ -2,9 +2,17 @@ import Contact from "./components/Contact/Contact";
 
 function App() {
 
-  const handleSubmit =()=>{}
+  const submit =(data)=>{
+    console.log(data)
+  }
+
+
   return (
-  <Contact/>
+    <div>
+      <h1>Phonebook</h1>
+      <Contact submit={submit}/>
+    </div>
+
   )
   
 }

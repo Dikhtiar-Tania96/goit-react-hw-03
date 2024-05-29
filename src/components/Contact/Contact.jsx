@@ -1,17 +1,24 @@
-const Contact = () => {
+import { useId } from "react";
+
+const Contact = ({ submit }) => {
+  const uniqUserId = useId();
+  const uniqNumberId = useId()
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(e.target.elements.user.value);
-    console.log(e.target.elements.phone.value);
-
+    submit({
+      user: e.target.elements.user.value,
+      phone: e.target.elements.phone.value,
+    });
     e.target.reset();
   };
+
   return (
     <form onSubmit={handleSubmit}>
-      <input type="text" name="user" />
-      <label />
-      <input type="text" name="phone" />
-      <label />
+      <label htmlFor={uniqUserId}>Name</label>
+      <input id={uniqUserId} type="text" name="user" />
+      <label htmlFor={uniqNumberId}>Number</label>
+      <input id={uniqNumberId} type="text" name="phone" />
       <button type="submit">Add contact</button>
     </form>
   );
