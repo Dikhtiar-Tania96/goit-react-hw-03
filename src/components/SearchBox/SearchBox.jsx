@@ -1,16 +1,18 @@
-import { useId} from "react"
+import { useId } from "react";
+import css from "./SearchBox.module.css";
 
-const SearchBox = ({value, onChange, name}) => {
-
-const uniqInputId = useId();
+const SearchBox = ({ value, onChange, name }) => {
+  const uniqInputId = useId();
 
   return (
-   <form>
+    <form>
+      <div className={css.formEl}>
         <label htmlFor={uniqInputId}>Find contacts by name</label>
-        <br/>
-        <input id={uniqInputId} type='text' value={value} onChange={onChange} name={name}/>
+        <br />
+        <input id={uniqInputId} value={value} onChange={onChange} name={name}/>
+      </div>
     </form>
-  )
-}
+  );
+};
 
-export default SearchBox
+export default SearchBox;
