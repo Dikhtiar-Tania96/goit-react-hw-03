@@ -1,13 +1,14 @@
-const Contact = ({ contact, onDelete }) => {
+import Contact from "./Contact/Contact";
+
+
+const ContactList = ({ contacts, onDeleteContact }) => {
   return (
-    <li>
-      <p>{contact.name}: {contact.number}</p>
-      <button onClick={onDelete}>Delete</button>
-    </li>
+    <ul>
+      {contacts.map(contact => (
+        <Contact key={contact.id} contact={contact} onDelete={() => onDeleteContact(contact.id)} />
+      ))}
+    </ul>
   );
 };
 
-export default Contact;
-
-
-
+export default ContactList;
