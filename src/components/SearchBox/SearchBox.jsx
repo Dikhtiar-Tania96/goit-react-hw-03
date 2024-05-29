@@ -1,10 +1,16 @@
-// const SearchBox = () => {
-//   return (
-//    <form>
-//         <label>Find contacts by name</label>
-//         <input type='text' name='userName'/>
-//     </form>
-//   )
-// }
+import { useId } from "react"
 
-// export default SearchBox
+const SearchBox = () => {
+
+    const uniqInputId = useId();
+
+  return (
+   <form>
+        <label htmlFor={uniqInputId}>Find contacts by name</label>
+        <br/>
+        <input id={uniqInputId} type='text' name='userName'/>
+    </form>
+  )
+}
+
+export default SearchBox

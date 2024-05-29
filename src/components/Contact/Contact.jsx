@@ -2,7 +2,7 @@ import { useId } from "react";
 
 const Contact = ({ submit }) => {
   const uniqUserId = useId();
-  const uniqNumberId = useId()
+  const uniqNumberId = useId();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -15,10 +15,16 @@ const Contact = ({ submit }) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <label htmlFor={uniqUserId}>Name</label>
-      <input id={uniqUserId} type="text" name="user" />
-      <label htmlFor={uniqNumberId}>Number</label>
-      <input id={uniqNumberId} type="text" name="phone" />
+      <div>
+        <label htmlFor={uniqUserId}>Name</label>
+        <br/>
+        <input id={uniqUserId} type="text" name="user" />
+      </div>
+      <div>
+        <label htmlFor={uniqNumberId}>Number</label>
+        <br/>
+        <input id={uniqNumberId} type="text" name="phone" />
+      </div>
       <button type="submit">Add contact</button>
     </form>
   );
