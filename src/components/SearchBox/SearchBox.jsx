@@ -4,10 +4,6 @@ const SearchBox = ({value, onChange, name}) => {
 
 const uniqInputId = useId();
 
-// const handleChange = (e) => {
-//     onChange(e.target.value)
-// }
-
   return (
    <form>
         <label htmlFor={uniqInputId}>Find contacts by name</label>

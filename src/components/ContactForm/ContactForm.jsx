@@ -1,33 +1,43 @@
-// import { useId } from "react";
+import { useId, useState } from "react";
+const initialValues = {
+    name : '',
+    phone: '',
+};
 
-// const ContactForm = ({ submit }) => {
-//   const uniqUserId = useId();
-//   const uniqNumberId = useId();
+const Contact = ({submit}) => {
+  const uniqUserId = useId();
+  const uniqNumberId = useId();
 
-//   const handleSubmit = (e) => {
-//     e.preventDefault();
-//     submit({
-//       user: e.target.elements.user.value,
-//       phone: e.target.elements.phone.value,
-//     });
-//     e.target.reset();
-//   };
+  const [state, setState] = useState(initialValues);
 
-//   return (
-//     <form onSubmit={handleSubmit}>
-//       <div>
-//         <label htmlFor={uniqUserId}>Name</label>
-//         <br/>
-//         <input id={uniqUserId} type="text" name="user" />
-//       </div>
-//       <div>
-//         <label htmlFor={uniqNumberId}>Number</label>
-//         <br/>
-//         <input id={uniqNumberId} type="text" name="phone" />
-//       </div>
-//       <button type="submit">Add contact</button>
-//     </form>
-//   );
-// };
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    submit(state) 
+    setState(initialValues)
+  }
 
-// export default ContactForm;
+const handleChangeName = (e) => {
+    setState({
+        ...state,
+        [e.target.name]: e.target.value,
+    })
+}
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <div>
+        <label htmlFor={uniqUserId}>Name</label>
+        <br />
+        <input id={uniqUserId} type="text" name="name" value={state.name} onChange={handleChangeName} />
+      </div>
+      <div>
+        <label htmlFor={uniqNumberId}>Number</label>
+        <br />
+        <input id={uniqNumberId} type="text" name="phone" value={state.phone} onChange={handleChangeName}/>
+      </div>
+      <button type="submit">Add contact</button>
+    </form>
+  );
+};
+
+export default Contact;
