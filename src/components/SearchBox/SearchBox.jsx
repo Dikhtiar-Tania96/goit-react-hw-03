@@ -1,20 +1,18 @@
-import { useId, useState } from "react"
+import { useId} from "react"
 
-const SearchBox = () => {
+const SearchBox = ({value, onChange, name}) => {
 
 const uniqInputId = useId();
 
-const [value, setValue] = useState('qwerty');
-
-const handleChange = (e) => {
-    setValue(e.target.value)
-}
+// const handleChange = (e) => {
+//     onChange(e.target.value)
+// }
 
   return (
    <form>
         <label htmlFor={uniqInputId}>Find contacts by name</label>
         <br/>
-        <input id={uniqInputId} type='text' value={value} onChange={handleChange}/>
+        <input id={uniqInputId} type='text' value={value} onChange={onChange} name={name}/>
     </form>
   )
 }

@@ -1,29 +1,37 @@
-import { useId } from "react";
+import { useId, useState } from "react";
 
-const Contact = ({ submit }) => {
+const Contact = () => {
   const uniqUserId = useId();
   const uniqNumberId = useId();
 
+  const [state, setState] = useState({
+    name : 'a',
+    phone: '123',
+  });
+
   const handleSubmit = (e) => {
-    e.preventDefault();
-    submit({
-      user: e.target.elements.user.value,
-      phone: e.target.elements.phone.value,
-    });
-    e.target.reset();
-  };
+    e.preventDefault()
+  }
+
+const handleChangeName = (e) => {
+    // setState({
+    //     ...state,
+    //     name: e.target.value
+    // })
+    console.log('e.target.name', e.target.name)
+}
 
   return (
     <form onSubmit={handleSubmit}>
       <div>
         <label htmlFor={uniqUserId}>Name</label>
-        <br/>
-        <input id={uniqUserId} type="text" name="user" />
+        <br />
+        <input id={uniqUserId} type="text" name="name" value={state.name} onChange={handleChangeName} />
       </div>
       <div>
         <label htmlFor={uniqNumberId}>Number</label>
-        <br/>
-        <input id={uniqNumberId} type="text" name="phone" />
+        <br />
+        <input id={uniqNumberId} type="text" name="phone" value={state.phone} onChange={handleChangeName}/>
       </div>
       <button type="submit">Add contact</button>
     </form>
