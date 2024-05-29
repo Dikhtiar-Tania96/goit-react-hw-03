@@ -1,4 +1,6 @@
 import { useId, useState } from "react";
+import css from './ContactForm.module.css'
+
 const initialValues = {
     name : '',
     phone: '',
@@ -25,17 +27,19 @@ const handleChangeName = (e) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <div>
-        <label htmlFor={uniqUserId}>Name</label>
+        <div className={css.formEl}>
+      <div className={css.formLbl}>
+        <label htmlFor={uniqUserId} className={css.formName}>Name</label>
         <br />
         <input id={uniqUserId} type="text" name="name" value={state.name} onChange={handleChangeName} />
       </div>
-      <div>
-        <label htmlFor={uniqNumberId}>Number</label>
+      <div className={css.formLbl}>
+        <label htmlFor={uniqNumberId} className={css.formName}>Number</label>
         <br />
         <input id={uniqNumberId} type="text" name="phone" value={state.phone} onChange={handleChangeName}/>
       </div>
-      <button type="submit">Add contact</button>
+      <button type="submit" className={css.formBtn}>Add contact</button>
+      </div>
     </form>
   );
 };
