@@ -1,6 +1,12 @@
 import { useId } from "react";
 import css from "./ContactForm.module.css";
-import { Field, Form, Formik } from "formik";
+import { ErrorMessage, Field, Form, Formik } from "formik";
+import * as Yup from "yup";
+
+const validationSchema = Yup.object().shape({
+  name: Yup.string().min(2, 'Min 2 sumbol 🙂').max(50, 'Max 50 sumbol 😯').required('required❗'),
+  phone: Yup.string().min(2,'Min 2 sumbol 🙂').max(50, 'Max 50 sumbol 😯').required('required❗'),
+});
 
 const Contact = ({ submit }) => {
   const uniqUserId = useId();
@@ -16,6 +22,7 @@ const Contact = ({ submit }) => {
         submit(values);
         actions.resetForm();
       }}
+      validationSchema={validationSchema}
     >
       <Form>
         <div className={css.formEl}>
@@ -25,6 +32,8 @@ const Contact = ({ submit }) => {
             </label>
             <br />
             <Field id={uniqUserId} type="text" name="name" />
+            <br/>
+            <ErrorMessage name="name"/>
           </div>
           <div className={css.formLbl}>
             <label htmlFor={uniqNumberId} className={css.formName}>
@@ -32,6 +41,8 @@ const Contact = ({ submit }) => {
             </label>
             <br />
             <Field id={uniqNumberId} type="text" name="phone" />
+            <br/>
+            <ErrorMessage name="phone"/>
           </div>
           <button type="submit" className={css.formBtn}>
             Add contact
