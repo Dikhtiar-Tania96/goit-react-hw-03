@@ -1,27 +1,31 @@
-/* .listElContact{ */
-    /* background-color:bisque;
-    border: 2px solid black;
+.listElContact {
+    display: flex;
+    justify-content: space-between;
+    background-color: bisque;
+    border: 2px solid white;
     border-radius: 10px;
-    padding:10px;
-    margin: 10px;
-    display: flex; */
-    /* display: flex;
-align-items: center; */
-/* justify-content: space-between; */
-/* padding: 8px;
-margin: 2px 0;
-border: 1px solid rgb(255, 255, 255);
-border-radius: 5px;
-}; */
+    padding: 10px;
+    margin: 15px;
 
-/* .btnContact{
-    border-radius: 50%;
-    padding: 16px;
-    border: none;
-    color: black;
-    background-color: #FFFACD;
+}
 
-    &:hover {
-     background-color: #FFE4B5;
-    }
-}; */
+.btnContact {
+  padding: 16px;
+  border: 3px solid black;
+  font-size: 20px;
+  padding: 10px;
+  width: auto;
+
+  &:hover {
+    background-color: red;
+    border-color: white;
+  }
+}
+
+.contactForm{
+  font-size: 20px;
+  margin: 10px;
+  font-weight: bold;
+}
+
+

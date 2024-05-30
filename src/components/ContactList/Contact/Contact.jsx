@@ -7,14 +7,14 @@ const Contact = ({ contact, onDelete }) => {
     return (
       <li className={css.listElContact}>
         <div className={css.contactForm}>
-        <VscAccount />
+        <VscAccount/>
           <p>{contact.name}</p>
         </div>
-        <div>
+        <div className={css.contactForm}>
         <FaPhoneAlt />
         <p>{contact.number}</p>
         </div>
-        <button onClick={onDelete} className={css.btnContact}>Delete</button>
+        <button className={css.btnContact} onClick={onDelete} >Delete</button>
       </li>
     );
   };

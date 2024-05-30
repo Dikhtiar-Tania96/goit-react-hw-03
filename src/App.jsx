@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-// import './App.css';
+import './App.css';
 import { nanoid } from "nanoid";
 import SearchBox from "./components/SearchBox/SearchBox";
 import ContactForm from "./components/ContactForm/ContactForm";
@@ -25,7 +25,7 @@ function App() {
   }, [contacts]);
 
   const addContact = (name, number) => {
-    const newContact = { id: nanoid(), name, number };
+    const newContact = { name, number };
     setContacts((prevContacts) => [...prevContacts, newContact]);
   };
 

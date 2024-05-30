@@ -8,24 +8,23 @@ import * as Yup from "yup";
 const Contact = ({ addContact }) => {
   const initialValues={
     name: " ",
-    phone: " ",
+    number: " ",
   }
   const uniqUserId = useId();
   const uniqNumberId = useId();
 
   const validationSchema = Yup.object().shape({
     name: Yup.string().min(2, 'Min 2 sumbol 🙂').max(50, 'Max 50 sumbol 😯').required('required❗'),
-    phone: Yup.string().min(2,'Min 2 sumbol 🙂').max(50, 'Max 50 sumbol 😯').required('required❗'),
+    number: Yup.string().min(2,'Min 2 sumbol 🙂').max(50, 'Max 50 sumbol 😯').required('required❗'),
   });
 
 
-  const onSubmit = (values, { resetForm }) => {
-    addContact(values.name, values.number);
+  const onSubmit = (contact, { resetForm }) => {
+    addContact(contact.name, contact.number);
     resetForm();
   };
   return (
-    <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}
-    >
+    <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
       <Form>
         <div className={css.formEl}>
           <div className={css.formLbl}>
@@ -38,9 +37,9 @@ const Contact = ({ addContact }) => {
           <div className={css.formLbl}>
             <label htmlFor={uniqNumberId} className={css.formName}> Number</label>
             <br />
-            <Field id={uniqNumberId} type="text" name="phone" />
+            <Field id={uniqNumberId} type="text" name="number" />
             <br/>
-            <ErrorMessage name="phone"/>
+            <ErrorMessage name="number"/>
           </div>
           <button type="submit" className={css.formBtn}>Add contact</button>
         </div>
