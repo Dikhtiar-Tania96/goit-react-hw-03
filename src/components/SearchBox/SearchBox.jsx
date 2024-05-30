@@ -5,13 +5,11 @@ const SearchBox = ({ value, onChange}) => {
   const uniqInputId = useId();
 
   return (
-    <form>
       <div className={css.formEl}>
         <label htmlFor={uniqInputId}> Find contacts by name</label>
         <br />
-        <input id={uniqInputId} value={value} onChange={onChange}/>
+        <input id={uniqInputId} value={value} type='text' onChange={(e)=>onChange(e.target.value)} />
       </div>
-    </form>
   );
 };
 
