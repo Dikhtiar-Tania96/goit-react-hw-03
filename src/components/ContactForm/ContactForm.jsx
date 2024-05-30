@@ -3,26 +3,28 @@ import css from "./ContactForm.module.css";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import * as Yup from "yup";
 
-const validationSchema = Yup.object().shape({
-  name: Yup.string().min(2, 'Min 2 sumbol 🙂').max(50, 'Max 50 sumbol 😯').required('required❗'),
-  phone: Yup.string().min(2,'Min 2 sumbol 🙂').max(50, 'Max 50 sumbol 😯').required('required❗'),
-});
 
-const Contact = ({ submit }) => {
+
+const Contact = ({ addContact }) => {
+  const initialValues={
+    name: " ",
+    phone: " ",
+  }
   const uniqUserId = useId();
   const uniqNumberId = useId();
 
+  const validationSchema = Yup.object().shape({
+    name: Yup.string().min(2, 'Min 2 sumbol 🙂').max(50, 'Max 50 sumbol 😯').required('required❗'),
+    phone: Yup.string().min(2,'Min 2 sumbol 🙂').max(50, 'Max 50 sumbol 😯').required('required❗'),
+  });
+
+
+  const onSubmit = (values, { resetForm }) => {
+    addContact(values.name, values.number);
+    resetForm();
+  };
   return (
-    <Formik
-      initialValues={{
-        name: " ",
-        phone: " ",
-      }}
-      onSubmit={(values, actions) => {
-        submit(values);
-        actions.resetForm();
-      }}
-      validationSchema={validationSchema}
+    <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}
     >
       <Form>
         <div className={css.formEl}>
