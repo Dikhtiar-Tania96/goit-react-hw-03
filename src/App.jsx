@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import './App.css';
-import { nanoid } from "nanoid";
 import SearchBox from "./components/SearchBox/SearchBox";
 import ContactForm from "./components/ContactForm/ContactForm";
 import ContactList from "./components/ContactList/ContactList";
